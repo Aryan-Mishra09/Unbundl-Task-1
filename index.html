@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Carousel</title>
+  <style>
+    /* CSS Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color:#cdfdff;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+      flex: 0 0 100%;
+      text-align: center;
+    }
+
+    .carousel-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    button.prev,
+    button.next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.3);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 50%;
+    }
+
+    button.prev {
+      left: 10px;
+    }
+
+    button.next {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="carousel-item">
+      <img src="product1.jpg" alt="Product 1">
+      <h3>Product 1</h3>
+      <p>Description of Product 1</p>
+      <p>Combo Laptop Offer 1: Power and Productivity Duo
+
+        Introducing a dynamic duo of laptops that cater to both power-hungry tasks and productivity needs. The first laptop in this combo is a
+         gaming powerhouse, featuring a high-performance processor, dedicated graphics card, and a high-refresh-rate display. Immerse yourself 
+         in a world of vivid graphics and seamless gaming experiences, whether you're conquering virtual realms or engaging in graphic-intensive 
+         tasks.Complementing this gaming beast is a sleek productivity laptop, finely tuned for work and creativity. With a fast and efficient
+        processor, ample RAM, and a crisp display, this laptop is perfect for multitasking, content creation, and business applications. Its slim
+         design and long-lasting battery make it ideal for professionals on the move.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="product2.jpg" alt="Product 2">
+      <h3>Product 2</h3>
+      <p>Description of Product 2</p>
+      <p>A smart gaming laptop is a portable computing device designed specifically for gaming enthusiasts who seek a balance between 
+        high-performance gaming capabilities and the convenience of a laptop form factor.Smart gaming laptops also incorporate intelligent 
+        features such as customizable RGB lighting, high-refresh-rate displays, and programmable macro keys. They may include technologies like 
+        NVIDIA G-Sync or AMD FreeSync for smoother gameplay by reducing screen tearing and stuttering. These laptops often come with a variety of 
+        connectivity options, including multiple USB ports, HDMI, and Thunderbolt, allowing users to connect to external devices and peripherals.</p>
+    </div>
+    <div class="carousel-item">
+      <img src="product3.jpg" alt="Product 3">
+      <h3>Product 3</h3>
+      <p>Description of Product 3</p>
+      <p>Introducing the Ultimate Mega Offer: Tri-Laptop Powerhouse
+
+        Embark on a computing revolution with our Mega Offer Combo, featuring three powerhouse laptops designed to meet all your diverse needs—gaming, productivity, and portability. This exclusive bundle is a gateway to unparalleled performance, versatility, and entertainment.
+        
+        1. Gaming Dominator:
+        Unleash the full potential of gaming with our high-performance gaming laptop. Featuring a cutting-edge processor, dedicated graphics card, 
+        and a stunning high-refresh-rate display, this laptop is engineered for immersive gaming experiences. From intense multiplayer battles to 
+        graphic-intensive simulations, elevate your gaming prowess with this dominator.
+        
+        2. Productivity Maestro:
+        Maximize your productivity with the productivity maestro in this combo. Boasting a sleek design, powerful processor, and ample RAM, this 
+        laptop is tailored for seamless multitasking, content creation, and business applications. The crisp display and long-lasting battery ensure 
+        you stay focused and efficient throughout your workday.
+        
+        3. Ultrabook Elegance:
+        Experience elegance in motion with our ultrabook, the epitome of style and portability. This slim and lightweight laptop is perfect for 
+        professionals and students on the move. With a responsive keyboard, vibrant display, and all-day battery life, it effortlessly combines 
+        sophistication with functionality, making it an ideal companion for your daily endeavors.</p>
+    </div>
+    <!-- Add more carousel items as needed -->
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+
+<script>
+  // JavaScript for carousel functionality
+  const carousel = document.querySelector('.carousel');
+  const slides = document.querySelectorAll('.carousel-item');
+  const prevButton = document.querySelector('.prev');
+  const nextButton = document.querySelector('.next');
+
+  let slideIndex = 0;
+  const totalSlides = slides.length;
+  const slideWidth = slides[0].clientWidth;
+
+  const showSlide = () => {
+    carousel.style.transform = `translateX(${-slideIndex * slideWidth}px)`;
+  };
+
+  const nextSlide = () => {
+    if (slideIndex >= totalSlides - 1) {
+      slideIndex = 0;
+    } else {
+      slideIndex++;
+    }
+    showSlide();
+  };
+
+  const prevSlide = () => {
+    if (slideIndex <= 0) {
+      slideIndex = totalSlides - 1;
+    } else {
+      slideIndex--;
+    }
+    showSlide();
+  };
+
+  showSlide();
+  setInterval(nextSlide, 3000);
+
+  prevButton.addEventListener('click', prevSlide);
+  nextButton.addEventListener('click', nextSlide);
+</script>
+
+</body>
+</html>
